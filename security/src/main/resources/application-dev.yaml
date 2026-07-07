@@ -1,0 +1,85 @@
+spring:
+  application:
+    name: security
+  rabbitmq:
+    host: ${SPRING_RABBITMQ_HOST:localhost}
+    port: 5672
+    username: guest
+    password: guest
+  datasource:
+    url: jdbc:postgresql://localhost:5432/todo_db
+    username: postgres
+    password: 140503
+    driver-class-name: org.postgresql.Driver
+
+    jpa:
+      hibernate:
+        ddl-auto: none
+      show-sql: true
+      properties:
+        hibernate:
+          dialect: org.hibernate.dialect.PostgreSQLDialect
+          format_sql: false
+    flyway:
+      enabled: true
+      locations: classpath:db/migrations
+      baseline-on-migrate: true
+      baseline-version: 1
+      validate-on-migrate: true
+      clean-disabled: true
+      out-of-order: false
+  security:
+    oauth2:
+      client:
+        registration:
+          google:
+            client-id:
+            client-secret:
+            scope:
+              - email
+              - profile
+              - openid
+          github:
+            client-id:
+            client-secret:
+            scope:
+              - user:email
+              - read:user
+  mail:
+    host: smtp.gmail.com
+    port: 587
+    username: pranitbhangale1453@gmail.com
+    password:
+    protocol: smtp
+    properties:
+      mail:
+        smtp:
+          auth: true
+          starttls:
+            enable: true
+          connectiontimeout: 5000
+          timeout: 5000
+          writetimeout: 5000
+  thymeleaf:
+    prefix: classpath:/templates/
+    suffix: .html
+    mode: HTML
+    encoding: UTF-8
+    cache: false
+mail:
+  from: pranitbhangale1453@gmail.com
+security:
+  accessToken:
+    expiration: 900
+  refreshToken:
+    expiration: 604800
+  token:
+    issuer: PranitBhangale
+  cookie:
+    name:
+      refreshTokenName: refreshToken
+      accessTokenName: accessToken
+    cookieHttpOnly: true
+    cookieSecure: false
+    cookieSameSite: lax
+    cookieDomain: localhost
