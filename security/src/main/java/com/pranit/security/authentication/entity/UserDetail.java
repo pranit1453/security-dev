@@ -105,22 +105,20 @@ public final class UserDetail extends AuditEntity implements UserDetails, Serial
     private Provider provider = Provider.LOCAL;
 
     @Column(name = "deleted", nullable = false)
-    @Builder.Default
-    private boolean deleted = false;
+    private boolean deleted;
 
     @Column(name = "enabled", nullable = false)
-    @Builder.Default
-    private boolean enabled = false;
+    private boolean enabled;
 
     @Column(name = "scheduled_deletion_at")
     private Instant scheduledDeletionAt;
 
-    @Builder.Default
-    private boolean AccountNonExpired = true;
-    @Builder.Default
-    private boolean AccountNonLocked = true;
-    @Builder.Default
-    private boolean CredentialsNonExpired = true;
+    private boolean accountNonExpired;
+
+    private boolean accountNonLocked;
+
+    private boolean credentialsNonExpired;
+
     @ManyToMany(fetch = FetchType.LAZY)
     @JoinTable(
             name = "user_roles",
@@ -152,5 +150,9 @@ public final class UserDetail extends AuditEntity implements UserDetails, Serial
                                         new SimpleGrantedAuthority(permission.getPermissionCode()))
                 ))
                 .collect(Collectors.toUnmodifiableSet());
+    }
+
+    public void addRole(RoleDetail role) {
+        this.roles.add(role);
     }
 }

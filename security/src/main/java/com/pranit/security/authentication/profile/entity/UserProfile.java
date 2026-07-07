@@ -31,7 +31,7 @@ import java.util.UUID;
         indexes = {
                 @Index(name = "idx_user_profile_first_name", columnList = "first_name"),
                 @Index(name = "idx_user_profile_last_name", columnList = "last_name"),
-                @Index(name = "idx_user_profile_birth_date", columnList = "birth_date"),
+                @Index(name = "idx_user_profile_dob", columnList = "dob"),
                 @Index(name = "idx_user_profile_gender", columnList = "gender")
         }
 )
@@ -63,8 +63,8 @@ public class UserProfile implements Serializable {
     @Column(name = "last_name", nullable = false, length = 100)
     private String lastName;
 
-    @Column(name = "birth_date")
-    private LocalDate birthDate;
+    @Column(name = "dob")
+    private LocalDate dob;
 
     @Column(name = "gender", length = 20)
     private String gender;

@@ -66,4 +66,8 @@ public interface UserRepository extends JpaRepository<UserDetail, UUID> {
                 WHERE u.email = :email
             """)
     Optional<UserDetail> findByEmailWithRoles(String email);
+
+    Optional<UserDetail> findByEmail(String email);
+
+    boolean existsByUserIdAndEmail(UUID userId, String email);
 }

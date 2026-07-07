@@ -1,5 +1,5 @@
 @ApplicationModule(
-        allowedDependencies = {"authorization::api", "shared", "authorization :: role"}
+        allowedDependencies = {"authorization::api", "shared", "authorization :: role", "otp :: api", "otp"}
 )
 
 package com.pranit.security.authentication;

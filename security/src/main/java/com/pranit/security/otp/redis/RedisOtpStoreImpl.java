@@ -1,9 +1,9 @@
 package com.pranit.security.otp.redis;
 
 
-import com.pranit.security.otp.exception.OTPBlock;
-import com.pranit.security.otp.exception.OTPResend;
 import com.pranit.security.shared.constants.OtpType;
+import com.pranit.security.shared.exception.OTPBlock;
+import com.pranit.security.shared.exception.OTPResend;
 import com.pranit.security.shared.redis.RedisOtpStore;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.redis.core.StringRedisTemplate;

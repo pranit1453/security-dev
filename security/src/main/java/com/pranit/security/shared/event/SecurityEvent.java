@@ -2,10 +2,13 @@ package com.pranit.security.shared.event;
 
 import lombok.Builder;
 
+import java.time.Instant;
+
 @Builder
 public record SecurityEvent(
         String eventId,
         String newMail,
-        String oldMail
+        String oldMail,
+        Instant timestamp
 ) {
 }

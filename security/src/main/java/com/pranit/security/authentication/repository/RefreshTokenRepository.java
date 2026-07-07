@@ -8,6 +8,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import java.time.Instant;
 import java.util.List;
+import java.util.Optional;
 import java.util.UUID;
 
 public interface RefreshTokenRepository extends JpaRepository<RefreshToken, UUID> {
@@ -38,4 +39,6 @@ public interface RefreshTokenRepository extends JpaRepository<RefreshToken, UUID
             OR rt.revoked = true
             """)
     int deleteExpiredAndRevokedTokens(Instant now);
+
+    Optional<RefreshToken> findByJti(String jti);
 }
